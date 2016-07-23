@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  	<node name="rsdk_gripper_action_server" pkg="baxter_interface" type="gripper_action_server.py" required="true" />
+  	<node name="rsdk_joint_trajectory_action_server" pkg="baxter_interface" type="joint_trajectory_action_server.py" required="true" />
+
+	<include file="$(find baxter_moveit_config)/launch/baxter_grippers.launch">
+  		<arg name="right_electric_gripper" default="false"/>
+  		<arg name="left_electric_gripper" default="true"/>
+	</include>
+</launch>
