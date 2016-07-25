@@ -5,9 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /MotionPlanning1
-        - /MotionPlanning1/Planned Path1/Links1
         - /RobotModel1
-        - /Marker1
       Splitter Ratio: 0.74256
     Tree Height: 495
   - Class: rviz/Help
@@ -664,14 +662,6 @@ Visualization Manager:
       Update Interval: 0
       Value: false
       Visual Enabled: true
-    - Class: rviz/Marker
-      Enabled: true
-      Marker Topic: visualization_marker
-      Name: Marker
-      Namespaces:
-        {}
-      Queue Size: 100
-      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -687,7 +677,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.40153
+      Distance: 3.73209
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
@@ -699,10 +689,10 @@ Visualization Manager:
         Z: 2.87439e-05
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: -0.00520339
+      Pitch: 0.0797966
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 6.16994
+      Yaw: 6.04994
     Saved: ~
 Window Geometry:
   Displays:
