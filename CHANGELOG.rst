@@ -2,6 +2,14 @@
 Changelog for package baxter_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.7 (2016-07-26)
+------------------
+* added gripper_action_controllers to controller list
+* updated srdf file to launch files to consider grippers
+* added all links of gripper to eef-group to allow a real grasping including touching the object
+* re-enabled some collisions to avoid major collisions between arms and screen resp. torso
+* Contributors: Arne Hitzmann
+
 1.0.6 (2016-04-19)
 ------------------
 * [fix] both_arm move group stopped functioning (`ref <https://groups.google.com/a/rethinkrobotics.com/forum/#!topic/brr-users/59kLdsAfR-g>`_)
