@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <launch>
+  <arg name="db" default="false" />
   <arg name="config" default="true"/>
   <arg name="rviz_config" default="$(find baxter_moveit_config)/launch/moveit.rviz" />
 
   <!-- By default we do not overwrite the URDF. Change the following to true to change the default behavior -->
-  <arg name="load_robot_description" default="false"/>
+  <arg name="load_robot_description" default="true"/>
   <!-- Left and right electric gripper params. Set to true to check for collisions for their links -->
-  <arg name="right_electric_gripper" default="false"/>
-  <arg name="left_electric_gripper" default="false"/>
+  <arg name="right_electric_gripper" default="true"/>
+  <arg name="left_electric_gripper" default="true"/>
   <!-- Set the kinematic tips for the left_arm and right_arm move_groups -->
   <arg name="left_tip_name" default="left_gripper"/>
   <arg name="right_tip_name" default="right_gripper"/>
@@ -19,14 +20,23 @@
     <arg name="right_tip_name" value="$(arg right_tip_name)"/>
   </include>
 
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+    <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
   <arg name="kinect" default="false" />
   <arg name="xtion" default="false" />
   <arg name="camera_link_pose" default="0.15 0.075 0.5 0.0 0.7854 0.0"/>
   <include file="$(find baxter_moveit_config)/launch/move_group.launch">
+    <arg name="fake_execution" value="true"/>
     <arg name="kinect" value="$(arg kinect)" />
     <arg name="xtion" value="$(arg xtion)" />
     <arg name="camera_link_pose" value="$(arg camera_link_pose)"/>
     <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="joint_states_topic" value="/joint_states"/>
   </include>
 
   <include file="$(find baxter_moveit_config)/launch/moveit_rviz.launch">
@@ -34,5 +44,5 @@
     <arg name="rviz_config" value="$(arg rviz_config)" />
   </include>
 
-  <include file="$(find baxter_moveit_config)/launch/default_warehouse_db.launch" />
+  <include file="$(find baxter_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/>
 </launch>
